@@ -1,0 +1,11 @@
+public class Main {
+    public static void main(String[] args) {
+        int integerValue = 97;
+        byte byteValue = (byte) integerValue;
+        System.out.println("Integer to Byte: " + byteValue);
+        char charValue = (char) integerValue;
+        System.out.println("Integer to Character: " + charValue);
+        float floatValue = (float) integerValue;
+        System.out.println("Integer to Float: " + floatValue);
+    }
+}

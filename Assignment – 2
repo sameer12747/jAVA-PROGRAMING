@@ -1,0 +1,94 @@
+Q1:-Write java Program for Consider a scenario, Bank is a class that provides functionality to get rate of interest. But, rate ofinterest varies according to banks. For example, SBI, ICICI and AXIS banks could provide 8%,7% and 9% rate of interest.(Method Overriding)	
+ans:-
+class Bank {
+    public double getRateOfInterest() {
+        return 0;
+    }
+}
+
+class SBI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 8.0; 
+    }
+}
+
+class ICICI extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 7.0; 
+    }
+}
+class AXIS extends Bank {
+    @Override
+    public double getRateOfInterest() {
+        return 9.0; 
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Bank sbi = new SBI();
+        Bank icici = new ICICI();
+        Bank axis = new AXIS();
+        System.out.println("SBI Interest Rate: " + sbi.getRateOfInterest() + "%");
+        System.out.println("ICICI Interest Rate: " + icici.getRateOfInterest() + "%");
+        System.out.println("AXIS Interest Rate: " + axis.getRateOfInterest() + "%");
+    }
+}
+Q2:-Develop a JAVA code to display the balance. Include the following members:
+•	Design a class to represent a bank account.
+•	Data Members: Name of the depositor, Account number, Type of account(Savings/Current), Balance amount in the account(Minimum balance is Rs.500.00) Methods:
+To read account number, Depositor name, Type of account.
+To deposit an amount (Deposited amount should be added with it)
+To withdraw an amount after checking balance(Minimum balance must be Rs.500.00
+ans:-
+import java.util.Scanner;
+class BankAccount {
+    private String depositorName;
+    private String accountNumber;
+    private String accountType; 
+    private double balance;
+    public BankAccount(String depositorName, String accountNumber, String accountType, double initialBalance) {
+        this.depositorName = depositorName;
+        this.accountNumber = accountNumber;
+        this.accountType = accountType;
+        this.balance = initialBalance >= 500 ? initialBalance : 500; 
+    }
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Invalid deposit amount.");
+        }
+    }
+    public void withdraw(double amount) {
+        if (balance - amount >= 500) {
+            balance -= amount;
+            System.out.println("Withdrawn: " + amount);
+        } else {
+            System.out.println("Insufficient balance. Minimum balance must be Rs.500.00");
+        }
+    }
+    public void displayBalance() {
+        System.out.println("Current Balance: " + balance);
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter depositor name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter account number: ");
+        String accNumber = scanner.nextLine();
+        System.out.print("Enter account type (Savings/Current): ");
+        String accType = scanner.nextLine();
+        System.out.print("Enter initial balance: ");
+        double initialBalance = scanner.nextDouble();
+        BankAccount account = new BankAccount(name, accNumber, accType, initialBalance);
+        account.displayBalance();
+        account.deposit(1000);
+        account.displayBalance();    
+        account.withdraw(300);
+        account.displayBalance();
+        account.withdraw(800); 
+    }
+}

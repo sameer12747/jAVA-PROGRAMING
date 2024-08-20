@@ -1,0 +1,112 @@
+Q1:-Write a program to print all the composite numbers between a and b?
+Sample Input:
+A = 12
+B = 19
+Sample Output 14, 15, 16, 18	
+ans:-
+public class CompositeNumbers {
+    public static void main(String[] args) {
+        int A = 12;
+        int B = 19;
+
+        System.out.print("Composite numbers between " + A + " and " + B + ": ");
+        for (int i = A; i <= B; i++) {
+            if (isComposite(i)) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+    public static boolean isComposite(int num) {
+        if (num < 4) return false; 
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return true; 
+            }
+        }
+        return false;
+    }
+}
+Q2:- Write a program to print the numbers from M to N by skipping K numbers in between?
+Sample Input:
+M = 50
+N = 100
+K = 7
+Sample Output: 50, 58, 66, 74, …..	
+ans:-
+public class NumberPrinter {
+    public static void main(String[] args) {
+        int M = 50;
+        int N = 100;
+        int K = 7;
+
+        for (int i = M; i <= N; i += (K + 1)) {
+            System.out.print(i + (i + (K + 1) <= N ? ", " : ""));
+        }
+    }
+}
+Q3:-Write a program to enter the marks of a student in four subjects. Then calculate the total and aggregate, display the grade obtained by the student. If the student scores an aggregate greater than 75%, then the grade is Distinction. If aggregate is 60>= and <75, then the grade is First Division. If aggregate is 50 >= and <60, then the grade is Second Division. If aggregate is 40>= and <50, then the grade is Third Division. Else the grade is Fail	
+
+ans:-
+import java.util.Scanner;
+public class StudentGrade {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+         System.out.print("Enter marks for Subject 1: ");
+        int subject1 = scanner.nextInt();
+        System.out.print("Enter marks for Subject 2: ");
+        int subject2 = scanner.nextInt();
+        System.out.print("Enter marks for Subject 3: ");
+        int subject3 = scanner.nextInt();
+        System.out.print("Enter marks for Subject 4: ");
+        int subject4 = scanner.nextInt();
+        int total = subject1 + subject2 + subject3 + subject4;
+        double aggregate = (total / 400.0) * 100; 
+                String grade;
+        if (aggregate > 75) {
+            grade = "Distinction";
+        } else if (aggregate >= 60) {
+            grade = "First Division";
+        } else if (aggregate >= 50) {
+            grade = "Second Division";
+        } else if (aggregate >= 40) {
+            grade = "Third Division";
+        } else {
+            grade = "Fail";
+        }
+      
+        System.out.println("Total Marks: " + total);
+        System.out.println("Aggregate Percentage: " + aggregate + "%");
+        System.out.println("Grade: " + grade);
+        scanner.close();
+    }
+}
+Q4:-Write a program to calculate tax given the following conditions:
+a.	If income is less than or equal to 1,50,000 then no tax
+b.	If taxable income is 1,50,001 – 3,00,000 the charge 10%
+tax
+c.	If taxable income is 3,00,001 – 5,00,000 the charge 20% tax
+d.	If taxable income is above 5,00,001 then charge 30% tax
+ans:-
+import java.util.Scanner;
+public class TaxCalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter your income: ");
+        double income = scanner.nextDouble();
+        double tax = calculateTax(income);
+        System.out.println("Your tax is: " + tax);
+    }
+    public static double calculateTax(double income) {
+        double tax = 0;
+        if (income <= 150000) {
+            tax = 0;
+        } else if (income <= 300000) {
+            tax = (income - 150000) * 0.10;
+        } else if (income <= 500000) {
+            tax = (150000 * 0.10) + (income - 300000) * 0.20;
+        } else {
+            tax = (150000 * 0.10) + (200000 * 0.20) + (income - 500000) * 0.30;
+        }
+        return tax;
+    }
+}

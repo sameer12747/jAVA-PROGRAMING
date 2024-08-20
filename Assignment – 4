@@ -1,0 +1,103 @@
+Q1:-Write a Java program to create a method that reads a file and throws an exception if the file is not 
+ans:-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.BufferedReader;
+import java.io.IOException;
+public class FileReaderExample {
+    public static void readFile(String filePath) throws FileNotFoundException {
+        File file = new File(filePath);
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        String line;
+        try {
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
+        } finally {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                System.err.println("Error closing the reader: " + e.getMessage());
+            }
+        }
+    }
+    public static void main(String[] args) {
+        try {
+            readFile("example.txt");
+        } catch (FileNotFoundException e) {
+            System.err.println("File not found: " + e.getMessage());
+        }
+    }
+}
+Q2:-Write a Java program to create a class called Student with private instance variables student_id, student_name, and grades. Provide public getter and setter methods to access and modify the student_id and student_name variables. However, provide a method called addGrade() that allows adding a grade to the
+grades variable while performing additional validation	
+ans:-
+import java.util.ArrayList;
+import java.util.List;
+public class Student {
+    private String studentId;
+    private String studentName;
+    private List<Double> grades;
+    public Student(String studentId, String studentName) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.grades = new ArrayList<>();
+    }
+    public String getStudentId() {
+        return studentId;
+    }
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+    public String getStudentName() {
+        return studentName;
+    }
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+    public void addGrade(double grade) {
+
+        if (grade < 0 || grade > 100) {
+            System.out.println("Invalid grade. Please enter a grade between 0 and 100.");
+        } else {
+            grades.add(grade);
+            System.out.println("Grade added successfully.");
+        }
+    }
+    public List<Double> getGrades() {
+        return grades;
+    }
+}
+Q3:-Write a JavaFX application with a text input field and a button. When the button is clicked, display the text entered in the input field in a label.
+ans:-
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+public class TextInputDisplayApp extends Application {
+    @Override
+    public void start(Stage primaryStage) {
+        TextField textField = new TextField();
+        Button button = new Button("Display Text");
+        Label label = new Label();
+        button.setOnAction(e -> {
+            String inputText = textField.getText();
+            label.setText(inputText);
+        });
+        VBox layout = new VBox(10, textField, button, label);
+        Scene scene = new Scene(layout, 300, 200);
+
+        primaryStage.setTitle("Text Input Display");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    public static void main(String[] args) {
+        launch(args);
+    }
+}

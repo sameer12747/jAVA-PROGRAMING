@@ -1,0 +1,7 @@
+public class IntegerToBinary {
+    public static void main(String[] args) {
+        int value = 19;
+        String binaryValue = Integer.toBinaryString(value);
+        System.out.println("Binary representation of " + value + " is: " + binaryValue);
+    }
+}

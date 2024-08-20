@@ -1,0 +1,185 @@
+Q1:-Write a Java program to create a class called Employee with methods called work() and get Salary(). Create a subclass called HRManager that overrides the work() method and adds a new method called addEmployee().
+ans:-
+class Employee {
+    private double salary;
+    public Employee(double salary) {
+        this.salary = salary;
+    }
+    public void work() {
+        System.out.println("Employee is working.");
+    }
+    public double getSalary() {
+        return salary;
+    }
+}
+class HRManager extends Employee 
+    public HRManager(double salary) {
+        super(salary);
+    }
+    @Override
+    public void work() {
+        System.out.println("HR Manager is managing employees.");
+    }
+    public void addEmployee(String employeeName) {
+        System.out.println("Adding employee: " + employeeName);
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee(50000);
+        emp.work();
+        System.out.println("Salary: " + emp.getSalary());
+        HRManager hrManager = new HRManager(70000);
+        hrManager.work();
+        hrManager.addEmployee("John Doe");
+        System.out.println("Salary: " + hrManager.getSalary());
+    }
+}
+Q2:-Write a Java program to create a vehicle class hierarchy. The base class should be Vehicle, with subclasses Truck, Car and Motorcycle. Each subclass should have properties such as make, model, year, and fuel type. Implement methods for calculating fuel efficiency, distance traveled, and maximum speed.	
+ans:-
+class Vehicle {
+    String make;
+    String model;
+    int year;
+    String fuelType;
+
+    public Vehicle(String make, String model, int year, String fuelType) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.fuelType = fuelType;
+    }
+
+    public double calculateFuelEfficiency(double milesDriven, double gallonsUsed) {
+        return milesDriven / gallonsUsed;
+    }
+
+    public double distanceTraveled(double speed, double time) {
+        return speed * time;
+    }
+
+    public double maxSpeed() {
+        return 0; 
+    }
+}
+
+class Truck extends Vehicle {
+    public Truck(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+    @Override
+    public double maxSpeed() {
+        return 80; 
+    }
+}
+class Car extends Vehicle {
+    public Car(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+    @Override
+    public double maxSpeed() {
+        return 120; 
+    }
+}
+class Motorcycle extends Vehicle {
+    public Motorcycle(String make, String model, int year, String fuelType) {
+        super(make, model, year, fuelType);
+    }
+    @Override
+    public double maxSpeed() {
+        return 180; 
+    }
+}
+Q3;-Write a Java program that creates a class hierarchy for employees of a company. The base class should be Employee, with subclasses Manager, Developer, and Programmer. Each subclass should have properties such as name, address, salary, and job title. Implement methods for calculating bonuses, generating performance
+reports, and managing projects.	
+ans:-
+class Employee {
+    String name;
+    String address;
+    double salary;
+    String jobTitle;
+
+    public Employee(String name, String address, double salary, String jobTitle) {
+        this.name = name;
+        this.address = address;
+        this.salary = salary;
+        this.jobTitle = jobTitle;
+    }
+    public double calculateBonus() {
+        return salary * 0.10; 
+    }
+
+    public String generatePerformanceReport() {
+        return name + " - " + jobTitle + ": Performance is satisfactory.";
+    }
+}
+
+class Manager extends Employee {
+    public Manager(String name, String address, double salary) {
+        super(name, address, salary, "Manager");
+    }
+
+    public void manageProject() {
+        System.out.println(name + " is managing a project.");
+    }
+}
+
+class Developer extends Employee {
+    public Developer(String name, String address, double salary) {
+        super(name, address, salary, "Developer");
+    }
+    public void developSoftware() {
+        System.out.println(name + " is developing software.");
+    }
+}
+class Programmer extends Employee {
+    public Programmer(String name, String address, double salary) {
+        super(name, address, salary, "Programmer");
+    }
+    public void writeCode() {
+        System.out.println(name + " is writing code.");
+    }
+}
+Q4:-Write a Java program to create an abstract class Shape with abstract methods calculateArea() and calculatePerimeter(). Create subclasses Circle and Triangle that extend the Shape class and implement the respective methods to calculate the area and perimeter of
+each shape
+ans:-
+abstract class Shape {
+    abstract double calculateArea();
+    abstract double calculatePerimeter();
+}
+class Circle extends Shape {
+    private double radius;
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+    @Override
+    double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+class Triangle extends Shape {
+    private double base;
+    private double height;
+    private double side1;
+    private double side2;
+    private double side3;
+    public Triangle(double base, double height, double side1, double side2, double side3) {
+        this.base = base;
+        this.height = height;
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+    @Override
+    double calculateArea() {
+        return (base * height) / 2;
+    }
+    @Override
+    double calculatePerimeter() {
+        return side1 + side2 + side3;
+    }
+}

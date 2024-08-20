@@ -1,0 +1,7 @@
+public class RemoveVowels {
+    public static void main(String[] args) {
+        String input = "welcome";
+        String result = input.replaceAll("[aeiouAEIOU]", "");
+        System.out.println("String after removing vowels: " + result);
+    }
+}

@@ -1,0 +1,102 @@
+Q1:-Write a program called SumProductMinMax3 that prompts user for three integers. The program shall read the inputs as int; compute the sum, product, minimum and maximum of the three integers; and print the results. For examples,
+Enter 1st integer: 8 Enter 2nd integer: 2 Enter 3rd integer: 9 The sum is: 19
+The product is: 144 The min is: 2
+The max is: 9	
+
+ans:-
+import java.util.Scanner;
+public class SumProductMinMax3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter 1st integer: ");
+        int first = scanner.nextInt();
+        System.out.print("Enter 2nd integer: ");
+        int second = scanner.nextInt();
+        System.out.print("Enter 3rd integer: ");
+        int third = scanner.nextInt();
+        int sum = first + second + third;
+        int product = first * second * third;
+        int min = Math.min(first, Math.min(second, third));
+        int max = Math.max(first, Math.max(second, third));
+        System.out.println("The sum is: " + sum);
+        System.out.println("The product is: " + product);
+        System.out.println("The min is: " + min);
+        System.out.println("The max is: " + max);
+
+        scanner.close();
+    }
+}
+Q2:-Calculate BMI Using Java
+The user enters his height (in inches) and weight (in pounds). The variables passed by the user are assigned to the float type. After calculating the BMI value, the value will be assigned to the appropriate range and the correct message will appear on the console. You can use the if-else-if ladder for printing the message on the console.
+
+Intervals of BMI index:
+
+16.00 or less = starvation 16.00-16.99 = emaciation 17.00-18.49 = underweight
+18.50-22.99 = normal, low range 23.00-24.99 = normal high range 25.00-27.49 = overweight low range
+27.50-29.99 = overweight high range
+30.00-34.99 = 1st degree obesity 35.00-39.99 = 2nd degree obesity
+40.00 or above = 3rd degree obesity		
+ans:-
+import java.util.Scanner;
+
+public class BMICalculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter your height in inches: ");
+        float height = scanner.nextFloat();
+        
+        System.out.print("Enter your weight in pounds: ");
+        float weight = scanner.nextFloat();
+        
+        float bmi = (weight * 703) / (height * height);
+        System.out.printf("Your BMI is: %.2f\n", bmi);
+      
+        if (bmi <= 16.00) {
+            System.out.println("Category: Starvation");
+        } else if (bmi < 17.00) {
+            System.out.println("Category: Emaciation");
+        } else if (bmi < 18.50) {
+            System.out.println("Category: Underweight");
+        } else if (bmi < 23.00) {
+            System.out.println("Category: Normal, Low Range");
+        } else if (bmi < 25.00) {
+            System.out.println("Category: Normal, High Range");
+        } else if (bmi < 27.50) {
+            System.out.println("Category: Overweight, Low Range");
+        } else if (bmi < 30.00) {
+            System.out.println("Category: Overweight, High Range");
+        } else if (bmi < 35.00) {
+            System.out.println("Category: 1st Degree Obesity");
+        } else if (bmi < 40.00) {
+            System.out.println("Category: 2nd Degree Obesity");
+        } else {
+            System.out.println("Category: 3rd Degree Obesity");
+        }
+        scanner.close();
+    }
+}
+Q3:-3	Write a program that will use the while loop to find the largest and smallest number from the set of 10 randomly drawn integers from 1 to 100. In this task, do not use arrays or other collections
+ans:-
+import java.util.Random;
+public class LargestSmallestFinder {
+    public static void main(String[] args) {
+        Random random = new Random();
+        int count = 0;
+        int largest = Integer.MIN_VALUE;
+        int smallest = Integer.MAX_VALUE;
+        while (count < 10) {
+            int number = random.nextInt(100) + 1; // Generate a number between 1 and 100
+            System.out.println("Generated Number: " + number);    
+            if (number > largest) {
+                largest = number;
+            }
+            if (number < smallest) {
+                smallest = number;
+            }
+            count++;
+        }
+        System.out.println("Largest Number: " + largest);
+        System.out.println("Smallest Number: " + smallest);
+    }
+}

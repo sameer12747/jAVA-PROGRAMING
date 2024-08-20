@@ -1,0 +1,14 @@
+public class StringLengthCalculator {
+    public static int calculateLengthRecursively(String str) {
+        if (str == null || str.isEmpty()) {
+            return 0;
+        }
+        return 1 + calculateLengthRecursively(str.substring(1));
+    }
+
+    public static void main(String[] args) {
+        String inputString = "JAVA";
+        int length = calculateLengthRecursively(inputString);
+        System.out.println("Length of the string \"" + inputString + "\" using recursion: " + length);
+    }
+}

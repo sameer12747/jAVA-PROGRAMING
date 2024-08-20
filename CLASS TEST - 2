@@ -1,0 +1,84 @@
+Q1:-Write a Java program to create an abstract class Shape with abstract methods calculateArea() and calculatePerimeter(). Create subclasses Circle and Triangle that extend the Shape class and implement the respective methods to calculate the area and
+perimeter of each shape	
+abstract class Shape {
+abstract double calculateArea();
+    abstract double calculatePerimeter();
+}
+class Circle extends Shape {
+    double radius;
+    Circle(double radius) {
+        this.radius = radius;
+    }
+    @Override
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+    @Override
+    double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+class Triangle extends Shape {
+    double side1, side2, side3;
+    Triangle(double side1, double side2, double side3) {
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+    @Override
+    double calculateArea() {
+        double s = (side1 + side2 + side3) / 2;
+        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    }
+    @Override
+    double calculatePerimeter() {
+        return side1 + side2 + side3;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Shape circle = new Circle(5.0);
+        System.out.println("Circle Area: " + circle.calculateArea());
+        System.out.println("Circle Perimeter: " + circle.calculatePerimeter());
+        Shape triangle = new Triangle(3.0, 4.0, 5.0);
+        System.out.println("Triangle Area: " + triangle.calculateArea());
+        System.out.println("Triangle Perimeter: " + triangle.calculatePerimeter());
+    }
+}
+Q2:-Write java Program for Consider a scenario, Bank is a class that provides functionality to get rate of interest. But, rate of
+interest varies according to banks. For example, SBI, ICICI and AXIS banks could provide 8%,
+7% and 9% rate of interest.(Method Overriding
+class Bank {
+    double getRateOfInterest() {
+        return 0.0; 
+    }
+}
+
+class SBI extends Bank {
+    @Override
+    double getRateOfInterest() {
+        return 8.0;
+    }
+}
+class ICICI extends Bank {
+    @Override
+    double getRateOfInterest() {
+        return 7.0;
+    }
+}
+class AXIS extends Bank {
+    @Override
+    double getRateOfInterest() {
+        return 9.0;
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Bank sbi = new SBI();
+        Bank icici = new ICICI();
+        Bank axis = new AXIS();
+        System.out.println("SBI Rate of Interest: " + sbi.getRateOfInterest() + "%");
+        System.out.println("ICICI Rate of Interest: " + icici.getRateOfInterest() + "%");
+        System.out.println("AXIS Rate of Interest: " + axis.getRateOfInterest() + "%");
+    }
+}
